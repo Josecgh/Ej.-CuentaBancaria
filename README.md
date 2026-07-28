@@ -5,6 +5,7 @@ Desarrollar un programa que modele una cuenta bancaria que tiene los siguientes 
 * Número de retiros con valor inicial cero, de tipo int.
 * Tasa anual (porcentaje), de tipo float.
 * Comisión mensual con valor inicial cero, de tipo float.
+
 La clase Cuenta tiene un constructor que inicializa los atributos saldo y tasa anual con valores pasados como parámetros. La clase Cuenta tiene los siguientes métodos:
 * Consignar una cantidad de dinero en la cuenta actualizando su saldo.
 * Retirar una cantidad de dinero en la cuenta actualizando su saldo. El valor a retirar no debe superar el saldo.
