@@ -36,5 +36,36 @@ public class Cuenta {
     this.retiros = retiros + 1;
   }
   
+  public void ingresarEfectivo(float num) {
+    this.saldo = saldo + num;
+    incrementarConsignacion();
+  }
+
+  public void sacarEfectivo(float num) {
+    if(0 <= num && num <= this.saldo) {
+      this.saldo = saldo - num;
+      incrementarRetiros();
+    }
+  }
+
+  public void calcularInteresMensual() {
+    float interesMensual = (this.tasaAnual / 12) / 100;
+    float interesDevengado = this.saldo * interesMensual;
+    this.saldo += interesDevengado;
+  }
+
+  public void extractoMensual() {
+    this.saldo -= this.comisionMensual;
+    this.calcularInteresMensual();
+  }
+
   
+  public String imprimir() {
+    return "Saldo: $" + String.format("%.2f", saldo) +
+            "\nNúmero de consignaciones: " + consignaciones +
+            "\nNúmero de retiros: " + retiros +
+            "\nTasa anual: " + tasaAnual + "%" +
+            "\nComisión mensual: $" + String.format("%.2f", comisionMensual)
+    ;
+  }
 }
