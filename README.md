@@ -36,3 +36,5 @@ La clase Cuenta tiene dos clases hijas:
 * Repositorio de Github
 * Captura de pantalla del diagrama de clase o enlace público al archivo de diagrams.net
 * Captura de pantalla de la sección testing de VSCode que muestre que se ha complido con la cobertura de tests
+
+![Separador Animado](https://capsule-render.vercel.app/api?type=waving&color=auto&height=100&section=header)
