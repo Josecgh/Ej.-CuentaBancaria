@@ -28,31 +28,13 @@ public class Cuenta {
     this.tasaAnual = tasaAnual;
   }
 
-  public String retirarEfectivo(float valor) {
-    String mensage = "";
-    if (valor > this.saldo) {
-      mensage = "No puedes retirar tanto dinero";
-    } else if (valor <= 0) {
-      mensage = "No has retirado nada";
-    } else {
-      saldo -= valor;
-      this.retiros = retiros + 1;
-      mensage = "Retiro exitoso";
-    }
-
-    return mensage;
+  public void incrementarConsignacion() {
+    this.consignaciones = consignaciones + 1;
   }
 
-  public String ingresarEfectivo(float valor) {
-    String mensaje = "";
-    if (valor <= 0) {
-      mensaje = "No has ingresado nada";
-    } else {
-      saldo += valor;
-      this.consignaciones = consignaciones + 1;
-      mensaje = "Ingreso exitoso";
-    }
-
-    return mensaje;
+  public void incrementarRetiros() {
+    this.retiros = retiros + 1;
   }
+  
+  
 }
