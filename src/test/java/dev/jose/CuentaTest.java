@@ -1,79 +1,72 @@
 package dev.jose;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import dev.jose.cuentas.Cuenta;
+import dev.jose.accounts.Account;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.BeforeEach;
+class AccountTest {
 
-/**
- * Unit test for simple App.
- */
-class CuentaTest {
-  /**
-   * Rigorous Test.
-   */
-  private Cuenta cuenta;
+  private Account account;
 
-    @BeforeEach
-    void setUp() {
-        // Inicializamos una cuenta con saldo $10,000 y tasa anual de 12%
-        cuenta = new Cuenta(10000, 12.0f);
-    }
+  @BeforeEach
+  void setUp() {
+    // Initializing an account with $10,000 balance and 12% annual rate
+    account = new Account(10000.0f, 12.0f);
+  }
 
-    @Test
-    void testEstadoInicial() {
-        assertEquals(10000.0f, cuenta.getSaldo());
-        assertEquals(12.0f, cuenta.getTasaAnual());
-    }
+  @Test
+  void testInitialState() {
+    assertEquals(10000.0f, account.getBalance());
+    assertEquals(12.0f, account.getAnnualRate());
+  }
 
-    @Test
-    void testIngresarEfectivo() {
-        cuenta.ingresarEfectivo(5000.0f);
-        assertEquals(15000.0f, cuenta.getSaldo());
-        assertTrue(cuenta.imprimir().contains("Número de consignaciones: 1"));
-    }
+  @Test
+  void testDeposit() {
+    account.deposit(5000.0f);
+    assertEquals(15000.0f, account.getBalance());
+    assertTrue(account.printInfo().contains("Number of deposits: 1"));
+  }
 
-    @Test
-    void testSacarEfectivoValido() {
-        cuenta.sacarEfectivo(3000.0f);
-        assertEquals(7000.0f, cuenta.getSaldo());
-        assertTrue(cuenta.imprimir().contains("Número de retiros: 1"));
-    }
+  @Test
+  void testValidWithdrawal() {
+    account.withdraw(3000.0f);
+    assertEquals(7000.0f, account.getBalance());
+    assertTrue(account.printInfo().contains("Number of withdrawals: 1"));
+  }
 
-    @Test
-    void testSacarEfectivoExcediendoSaldo() {
-        // Intentar retirar más dinero del disponible no debe modificar el saldo ni incrementar los retiros
-        cuenta.sacarEfectivo(15000.0f);
-        assertEquals(10000.0f, cuenta.getSaldo());
-        assertTrue(cuenta.imprimir().contains("Número de retiros: 0"));
-    }
+  @Test
+  void testWithdrawalExceedingBalance() {
+    // Attempting to withdraw more than the available balance should not modify the
+    // balance nor increase withdrawals
+    account.withdraw(15000.0f);
+    assertEquals(10000.0f, account.getBalance());
+    assertTrue(account.printInfo().contains("Number of withdrawals: 0"));
+  }
 
-    @Test
-    void testCalcularInteresMensual() {
-        // Con tasa anual de 12%, el interés mensual es 1% (12 / 12)
-        // 1% de $10,000 = $100 -> Nuevo saldo: $10,100
-        cuenta.calcularInteresMensual();
-        assertEquals(10100.0f, cuenta.getSaldo(), 0.01f);
-    }
+  @Test
+  void testCalculateMonthlyInterest() {
+    // With a 12% annual rate, the monthly rate is 1%
+    // 1% of $10,000 = $100 -> New balance: $10,100
+    account.calculateMonthlyInterest();
+    assertEquals(10100.0f, account.getBalance(), 0.01f);
+  }
 
-    @Test
-    void testExtractoMensual() {
-        // En tu clase actual comisionMensual es 0
-        // Aplica el interés mensual sobre el saldo actual
-        cuenta.extractoMensual();
-        assertEquals(10100.0f, cuenta.getSaldo(), 0.01f);
-    }
+  @Test
+  void testMonthlyStatement() {
+    account.monthlyStatement();
+    assertEquals(10100.0f, account.getBalance(), 0.01f);
+  }
 
-    @Test
-    void testImprimir() {
-      String resultado = cuenta.imprimir();
-      assertNotNull(resultado);
-      assertTrue(resultado.contains("Saldo: $10000"));
-      assertTrue(resultado.contains("Tasa anual: 12.0%"));
-    }
+  @Test
+  void testPrintInfo() {
+    String result = account.printInfo();
+    assertNotNull(result);
+    assertTrue(result.contains("Balance: $10000.00"));
+    assertTrue(result.contains("Annual rate: 12.0%"));
+  }
 }
