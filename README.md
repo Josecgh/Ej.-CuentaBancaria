@@ -38,3 +38,4 @@ La clase Cuenta tiene dos clases hijas:
 * Captura de pantalla de la sección testing de VSCode que muestre que se ha complido con la cobertura de tests
 
 ![Separador Animado](https://capsule-render.vercel.app/api?type=waving&color=auto&height=100&section=header)
+

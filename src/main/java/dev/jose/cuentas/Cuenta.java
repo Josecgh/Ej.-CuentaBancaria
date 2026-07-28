@@ -1,4 +1,4 @@
-package dev.jose;
+package dev.jose.cuentas;
 
 public class Cuenta {
   private float saldo;
@@ -59,7 +59,7 @@ public class Cuenta {
     this.calcularInteresMensual();
   }
 
-  
+
   public String imprimir() {
     return "Saldo: $" + String.format("%.2f", saldo) +
             "\nNúmero de consignaciones: " + consignaciones +
