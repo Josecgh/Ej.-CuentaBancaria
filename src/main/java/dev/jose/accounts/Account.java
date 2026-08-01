@@ -5,8 +5,8 @@ import java.util.Locale;
 public class Account {
     // Protected fields to allow inheritance in subclasses
     protected float balance;
-    protected int deposits = 0;
-    protected int withdrawals = 0;
+    protected int nDeposits = 0;
+    protected int nWithdrawals = 0;
     protected float annualRate;
     protected float monthlyFee = 0;
 
@@ -31,12 +31,12 @@ public class Account {
         this.annualRate = annualRate;
     }
 
-    public int getDeposits() {
-        return this.deposits;
+    public int getNDeposits() {
+        return this.nDeposits;
     }
 
-    public int getWithdrawals() {
-        return this.withdrawals;
+    public int getNWithdrawals() {
+        return this.nWithdrawals;
     }
 
     public float getMonthlyFee() {
@@ -48,11 +48,11 @@ public class Account {
     }
 
     public void incrementDeposits() {
-        this.deposits++;
+        this.nDeposits++;
     }
 
     public void incrementWithdrawals() {
-        this.withdrawals++;
+        this.nWithdrawals++;
     }
 
     public void deposit(float amount) {
@@ -83,7 +83,7 @@ public class Account {
     public String printInfo() {
         return String.format(Locale.US,
             "Balance: $%.2f\nNumber of deposits: %d\nNumber of withdrawals: %d\nAnnual rate: %.1f%%\nMonthly fee: $%.2f",
-            balance, deposits, withdrawals, annualRate, monthlyFee
+            balance, nDeposits, nWithdrawals, annualRate, monthlyFee
         );
     }
 }
