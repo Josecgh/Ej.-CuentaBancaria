@@ -69,4 +69,29 @@ class AccountTest {
     assertTrue(result.contains("Balance: $10000.0"));
     assertTrue(result.contains("Annual rate: 12.0%"));
   }
+
+  @Test
+  void testSettersAndGettersCoverage() {
+    // Cubre las líneas 20-22 (setBalance)
+    account.setBalance(5000.0f);
+    assertEquals(5000.0f, account.getBalance());
+
+    // Cubre las líneas 28-30 (setAnnualRate)
+    account.setAnnualRate(15.0f);
+    assertEquals(15.0f, account.getAnnualRate());
+
+    // Cubre las líneas 32-34 (getNDeposits)
+    assertEquals(0, account.getNDeposits());
+    account.deposit(100.0f);
+    assertEquals(1, account.getNDeposits());
+  }
+  @Test
+  void testInvalidDepositAndWithdrawal() {
+    // Probar montos <= 0 para cubrir las ramas faltantes en los if (líneas 57 y 64)
+    account.deposit(-50.0f);
+    assertEquals(10000.0f, account.getBalance());
+
+    account.withdraw(-50.0f);
+    assertEquals(10000.0f, account.getBalance());
+  }
 }
