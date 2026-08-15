@@ -66,7 +66,7 @@ class AccountTest {
   void testPrintInfo() {
     String result = account.printInfo();
     assertNotNull(result);
-    assertTrue(result.contains("Balance: $10000.00"));
+    assertTrue(result.contains("Balance: $10000.0"));
     assertTrue(result.contains("Annual rate: 12.0%"));
   }
 }

@@ -1,7 +1,5 @@
 package dev.jose.accounts;
 
-import java.util.Locale;
-
 public class Account {
     // Protected fields to allow inheritance in subclasses
     protected float balance;
@@ -81,9 +79,10 @@ public class Account {
     }
 
     public String printInfo() {
-        return String.format(Locale.US,
-            "Balance: $%.2f\nNumber of deposits: %d\nNumber of withdrawals: %d\nAnnual rate: %.1f%%\nMonthly fee: $%.2f",
-            balance, nDeposits, nWithdrawals, annualRate, monthlyFee
-        );
+        return "Balance: $" + balance +
+            "\nNumber of deposits: " + nDeposits +
+            "\nNumber of withdrawals: " + nWithdrawals +
+            "\nAnnual rate: " + annualRate + "%" +
+            "\nMonthly fee: $" + monthlyFee;
     }
 }
