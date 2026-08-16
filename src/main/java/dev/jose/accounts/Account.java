@@ -1,12 +1,11 @@
 package dev.jose.accounts;
 
 public class Account {
-    // Protected fields to allow inheritance in subclasses
-    protected float balance;
-    protected int nDeposits = 0;
-    protected int nWithdrawals = 0;
-    protected float annualRate;
-    protected float monthlyFee = 0;
+    private float balance;
+    private int nDeposits = 0;
+    private int nWithdrawals = 0;
+    private float annualRate;
+    private float monthlyFee = 0;
 
     public Account(float balance, float annualRate) {
         this.balance = balance;
