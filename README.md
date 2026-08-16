@@ -39,3 +39,8 @@ La clase Cuenta tiene dos clases hijas:
 
 ![Separador Animado](https://capsule-render.vercel.app/api?type=waving&color=auto&height=100&section=header)
 
+### Diagrama UML: ###
+<img width="594" height="463" alt="image" src="https://github.com/user-attachments/assets/3c823a47-f80b-48a7-a531-67b81991fe26" />
+
+### Test unitario: ###
+<img width="1250" height="718" alt="image" src="https://github.com/user-attachments/assets/587a65c0-383c-4ab8-9b77-045422a17066" />
